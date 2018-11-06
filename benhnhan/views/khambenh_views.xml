@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--tree view-->
+        <record id="khambenh_tree_view" model="ir.ui.view">
+            <field name="name">khambenh.tree</field>
+            <field name="model">qtsx.khambenh</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="benhnhan" string="Bệnh nhân"/>
+                    <field name="loaibenh" string="Loại bệnh"/>
+                    <field name="chuandoan"/>
+                    <field name="ngaykhambenh"/>
+                    <field name="ghichu"/>
+                </tree>
+            </field>
+
+        </record>
+        <!--form view-->
+        <record id="khambenh_form_view" model="ir.ui.view">
+            <field name="name">khambenh.form</field>
+            <field name="model">qtsx.khambenh</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                 <field name="benhnhan" string="Bệnh nhân"/>
+                                 <field name="chuandoan"/>
+                                 <field name="ghichu"/>
+                            </group>
+                             <group>
+                                 <field name="loaibenh" string="Loại bệnh"/>
+                                 <field name="ngaykhambenh"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--kanban view-->
+        <record id="khambenh_kanban_view" model="ir.ui.view">
+            <field name="name">khambenh.kanban</field>
+            <field name="model">qtsx.khambenh</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+               <kanban class="o_kanban_mobile">
+                    <field name="benhnhan" string="Bệnh nhân"/>
+                    <field name="loaibenh" string="Loại bệnh"/>
+                    <field name="chuandoan"/>
+                     <field name="ngaykhambenh"/>
+                 <templates>
+                     <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong><field name="benhnhan" string="Bệnh nhân"/></strong>
+                                    </div>
+                                    <div class="col-xs-6 pull-right text-right">
+                                        <strong><field name="ngaykhambenh"/></strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <field name="loaibenh" string="Loại bệnh"/>
+                                        <field name="chuandoan"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                 </templates>
+               </kanban>
+            </field>
+        </record>
+        <!--calendar view-->
+        <record id="khambenh_calendar_view" model="ir.ui.view">
+            <field name="name">khambenh.tree</field>
+            <field name="model">qtsx.khambenh</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar View" date_start="ngaykhambenh">
+                    <field name="benhnhan" string="Bệnh nhân"/>
+                    <field name="loaibenh" string="Loại bệnh"/>
+                    <field name="chuandoan"/>
+                </calendar>
+            </field>
+        </record>
+        <!--search view-->
+        <record id="khambenh_search" model="ir.ui.view">
+            <field name="name">khambenh.search</field>
+            <field name="model">qtsx.khambenh</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="benhnhan" string="Bệnh nhân"/>
+                     <field name="chuandoan"/>
+                     <field name="ngaykhambenh"/>
+                     <group expand="0" string="Group By">
+                        <filter string="Bệnh nhân" name="Bệnh nhân" domain="[]" context="{'group_by':'benhnhan'}"/>
+                         <filter string="Loại bệnh" name="LoaiBenh" domain="[]" context="{'group_by':'loaibenh'}"/>
+                     </group>
+                </search>
+            </field>
+        </record>
+
+        <!--action view-->
+        <record id="khambenh_action" model="ir.actions.act_window">
+            <field name="name">Khám bệnh</field>
+            <field name="res_model">qtsx.khambenh</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
+            <field name="context">{
+                 'search_default_LoaiBenh': '1',
+            }</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem name="Dự án"
+                  id="menu_moi"
+                  groups="project.group_project_manager,project.group_project_user"
+                  sequence="55"/>
+        <menuitem name="Dự án"
+                  id="menu_moi_con"
+                  groups="project.group_project_manager,project.group_project_user"
+                  parent="menu_moi"/>
+        <menuitem action="project.open_view_project_all_config" id="setting" name="Dự án" parent="menu_moi_con" sequence="1"/>
+        <menuitem action="project.open_task_type_form" id="menu_project" name="Trạng thái" parent="menu_moi_con" sequence="4" groups="project.group_project_manager"/>
+        <menuitem action="project.action_view_task" id="menu_project_action_view_task" name="Nhiệm vụ" parent="menu_moi_con" sequence="2"/>
+        <menuitem id="loai_menu"
+                  name="Loại dự án"
+                  action="loai_action"
+                  parent="menu_moi_con"
+                  sequence="3"/>
+        <record id="view_task_form2_inherit" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='project_id']" position="after">
+                    <field name="loai" string="Loại"/>
+                    <field name="UuTien" string="Ưu tiên"/>
+                </xpath>
+                <group>
+                    <group string="Thời gian">
+                        <field name="ThoiGianUocLuong" string="Thời gian ước lượng"/>
+                        <field name="ThoiGianThucTe" string="Thời gian thực tế"/>
+                        <field name="ngaybatdau" string="Ngày bắt đầu"/>
+                        <field name="ngayketthuc" string="Ngày kết thúc"/>
+                         <field name="progress" string="Tiến độ"/>
+                    </group>
+                </group>
+                <xpath expr="//field[@name='tag_ids']" position="replace">
+                    <field name="tag_ids" invisible="1" string="Thẻ" widget="many2many_tags"/>
+                    <field name="project_task_ids" widget="many2many_tags"/>
+                </xpath>
+                <xpath expr="//field[@name='project_id']" position="replace">
+                       <field name="project_id" invisible="context.get('user_invisible', False)" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                </xpath>
+                <xpath expr="//notebook" position="replace">
+                       <notebook>
+                        <page name="description_page" string="Mô tả">
+                            <field name="description" type="html"/>
+                            <div class="oe_clear"/>
+                        </page>
+                    </notebook>
+                </xpath>
+                <xpath expr="//div[@class='oe_chatter']" position="replace">
+                </xpath>
+            </field>
+        </record>
+        <!--Form loai tree-->
+        <record id="view_task_tree2_inherit" model="ir.ui.view">
+            <field name="name">project.task.tree_inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='stage_id']" position="after">
+                     <field name="loai" string="Loại"/>
+                    <field name="ThoiGianUocLuong" string="Ước lượng(h)" sum="Tổng thời gian"/>
+                    <field name="ThoiGianThucTe" string="Thực tế(h)" sum="Tổng thời gian"/>
+                    <field name="ngaybatdau" string="Ngày bắt đầu"/>
+                    <field name="progress" string="Tiến độ"/>
+                    <field name="date_deadline" string="Ngày hết hạn"/>
+                    <field name="create_date" string="Ngày tạo"/>
+                 </xpath>
+            </field>
+        </record>
+        <!--Action Task-->
+        <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="context">{
+                'group_by': 'project_id',
+                'search_default_my_tasks': 0,
+            }</field>
+        </record>
+        <record id="project.action_project_task_user_tree" model="ir.actions.act_window">
+            <field name="name">Tasks Analysis</field>
+            <field name="res_model">report.project.task.user</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+        </record>
+
+        <!--Search View Task-->
+        <record id="project.view_task_search_form" model="ir.ui.view">
+            <field name="name">project.task.search.form_inherit</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="name" string="Tasks"/>
+                    <field name="tag_ids"/>
+                    <field name="partner_id"/>
+                    <field name="project_id"/>
+                    <field name="user_id"/>
+                    <field name="stage_id"/>
+                    <filter string="My Tasks" name="my_tasks" domain="[('user_id','=',uid)]"/>
+                    <filter string="Unassigned" name="unassigned" domain="[('user_id', '=', False)]"/>
+                    <separator/>
+                    <filter string="New" name="draft" domain="[('stage_id.sequence', '&lt;=', 1)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Project" name="project" context="{'group_by':'project_id'}"/>
+                        <filter string="Task" context="{'group_by':'name'}"/>
+                        <filter string="Assigned to" name="User" context="{'group_by':'user_id'}"/>
+                        <filter string="Stage" name="Stage" context="{'group_by':'stage_id'}"/>
+                        <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                        <separator/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <!--Search View Project-->
+        <record id="project.view_project_project_filter" model="ir.ui.view">
+            <field name="name">project.project.select</field>
+            <field name="model">project.project</field>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="name" string="Project Name"/>
+                    <field name="user_id" string="Project Manager"/>
+                    <field name="partner_id" string="Contact" filter_domain="[('partner_id', 'child_of', self)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Manager" name="Manager" context="{'group_by':'user_id'}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <!--Config Setting-->
+        <record id="project.view_config_settings" model="ir.ui.view">
+            <field name="name">project settings</field>
+            <field name="model">project.config.settings</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="replace">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link" special="cancel"/>
+                    </header>
+                    <group string="Project Management" name="project_management">
+                        <field name="company_id" invisible="1"/>
+                        <label for="project_time_mode_id" string="Đơn vị mặc định"/>
+                        <div>
+                            <field name="project_time_mode_id" string="Đơn vị mặc định" domain="[('category_id','=', %(product.uom_categ_wtime)d)]" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <group name="timesheets"/>
+                    <div>
+                        <span>(*) This configuration is related to the company you're logged into.</span>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="context">{
+                'group_by': 'stage_id',
+            }</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create new tasks
+                </p>
+                <p>
+                    You can now manage your tasks in order to get things done efficiently. Track progress, discuss, attach documents, etc.
+                </p>
+            </field>
+        </record>
+        <record id="project.task_type_edit" model="ir.ui.view">
+            <field name="name">project.task.type.form</field>
+            <field name="model">project.task.type</field>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="replace">
+                    <form string="Task Stage">
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                                <group>
+                                    <field name="fold"/>
+                                    <field name="project_ids" widget="many2many_tags" groups="base.group_no_one"/>
+                                    <field name="sequence" groups="base.group_no_one"/>
+                                </group>
+                            </group>
+                            <group string="Ghi chú">
+                                <field name="description" placeholder="Add a description..." nolabel="1" colspan="2"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

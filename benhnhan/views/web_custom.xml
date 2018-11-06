@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--hide select database odoo-->
+    <template id="web_login_custom" inherit_id="web.login">
+        <xpath expr="//t[@t-call='web.login_layout']" position="replace">
+            <t t-call="web.login_layout">
+                <div class="logo">
+                    <h2>Phần Mềm Quản lý</h2>
+                    <h4>Bs</h4>
+                </div>
+                <div class="o_login">
+                    <div class="panel-heading title">
+                        <h3 class="panel-title ">
+                            <i class="fa fa-home"></i>
+                            <div class="font Head">   Đăng nhập thành viên</div>
+                        </h3>
+                    </div>
+
+                    <form class="oe_login_form" role="form" t-attf-action="/web/login{{ '?debug' if debug else '' }}" method="post" onsubmit="this.action = this.action + location.hash">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <div class="form-group field-login">
+                            <label for="login" class="control-label">Tài khoản: </label>
+                            <input type="text" name="login" t-att-value="login" id="login" class="form-control" required="required" autofocus="autofocus" autocapitalize="off"/>
+                        </div>
+
+                        <div class="form-group field-password">
+                            <label for="password" class="control-label">Mật khẩu: </label>
+                            <input type="password" name="password" id="password" class="form-control" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+                        </div>
+
+                        <p class="alert alert-danger" t-if="error">
+                            <t t-esc="error"/>
+                        </p>
+                        <p class="alert alert-success" t-if="message">
+                            <t t-esc="message"/>
+                        </p>
+                        <br/>
+                        <input type="hidden" name="redirect" t-att-value="redirect"/>
+                        <div class="clearfix oe_login_buttons center">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-key"></i> Đăng nhập</button>
+                            <button type="button" onclick="location.reload();" class="btn btn-default"><i class="fa fa fa-ban"></i> Hủy bỏ</button>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="web_layout_custom" inherit_id="web.layout">
+        <xpath expr="//link" position="replace">
+            <link type="image/x-icon" rel="shortcut icon" t-att-href="x_icon or '/menu_customization/static/img/logo.png'"/>
+        </xpath>
+    </template>
+
+    <!--change logo and hide manage database odoo-->
+    <template id="web_loginlayout_custom" inherit_id="web.login_layout">
+        <xpath expr="//t[@t-call='web.layout']" position="replace">
+            <t t-call="web.layout">
+                <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
+                <t t-set="head">
+                    <t t-call-assets="web.assets_common" t-js="false"/>
+                    <t t-call-assets="web.assets_frontend" t-js="false"/>
+                    <t t-call-assets="web.assets_common" t-css="false"/>
+                    <t t-call-assets="web.assets_frontend" t-css="false"/>
+                </t>
+                <t t-set="body_classname" t-value="'container'"/>
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 o_database_list">
+                        <div class="text-center">
+                            <br/><img t-attf-src="/menu_customization/static/img/logo.png" />
+                        </div>
+                        <t t-raw="0"/>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <!--change preference view in user menu top navbar-->
+    <record id="view_users_form_inherit" model="ir.ui.view">
+        <field name="name">res.users.preferences.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="replace">
+                <form string="Users">
+                    <field name="image" readonly="0" widget='image' class="oe_right oe_avatar" options='{"preview_image": "image_small"}'/>
+                    <h1>
+                        <field name="name" readonly="1" class="oe_inline"/>
+                    </h1>
+                    <group string="Email Preferences" invisible="1">
+                        <field name="email" widget="email" readonly="0"/>
+                        <field name="signature" readonly="0"/>
+                    </group>
+                    <button name="preference_change_password" type="object" string="Change password" class="oe_link"/>
+                        <footer>
+                        <button name="preference_save" type="object" string="Save" class="btn-primary"/>
+                        <button name="preference_cancel" string="Cancel" special="cancel" class="btn-default"/>
+                    </footer>
+                </form>
+            </xpath>
+        </field>
+    </record>
+
+    <!--remove powered by odoo-->
+    <template id="menu_secondary_custom" inherit_id="web.menu_secondary">
+        <xpath expr="//div[@class='o_sub_menu_footer']" position="replace">
+            <div class="o_sub_menu_footer">
+                Copyright © 2018, Thanh Vu.
+            </div>
+        </xpath>
+    </template>
+
+    <template id="web.menu">
+        <ul class="nav navbar-nav navbar-left oe_application_menu_placeholder" style="display: none;">
+            <li class="menu_one">
+                <!--<t t-if="request.env.user.has_group('mrp.group_mrp_manager')">-->
+                    <a href="#" class="oe_menu_toggler" style=" padding: 0 !important;  line-height: 39px !important; text-shadow: 1px 1px 1px #003b5a;">
+                        <span class="oe_menu_text" style="font-size: 18px !important; ">
+                            QTBN
+                        </span>
+                    </a>
+                <!--</t>-->
+                <!--<t t-else="">-->
+                    <!--<a href="#" class="oe_menu_toggler" style=" padding: 0 !important;  line-height: 39px !important; text-shadow: 1px 1px 1px #003b5a;">-->
+                        <!--<span class="oe_menu_text" style="font-size: 18px !important; ">-->
+                            <!--Test module-->
+                        <!--</span>-->
+                    <!--</a>-->
+                <!--</t>-->
+            </li>
+
+            <li t-foreach="menu_data['children']" t-as="menu">
+                <t t-call="web.menu_link"/>
+            </li>
+            <li id="menu_more_container" class="dropdown" style="display: none;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+                <ul id="menu_more" class="dropdown-menu"></ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right oe_user_menu_placeholder" style="display: none;"/>
+        <ul class="nav navbar-nav navbar-right oe_systray" style="display: none;"/>
+    </template>
+</odoo>

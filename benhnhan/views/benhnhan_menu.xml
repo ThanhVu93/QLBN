@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem name="Bệnh nhân"
+                  id="menu_moi"
+                  sequence="55"/>
+        <menuitem name="Bệnh nhân"
+                  id="menu_moi_con"
+                  parent="menu_moi"/>
+        <menuitem id="khambenh_menu"
+                  name="Khám bệnh"
+                  action="khambenh_action"
+                  parent="menu_moi_con"
+                  sequence="3"/>
+        <menuitem id="benhnhan_menu"
+                  name="Bệnh nhân"
+                  action="benhnhan_action"
+                  parent="menu_moi_con"
+                  sequence="4"/>
+        <menuitem id="diaphuong_menu"
+                  name="Địa phương"
+                  action="diaphuong_action"
+                  parent="menu_moi_con"
+                  sequence="7"/>
+        <menuitem id="khambenh_report"
+                  name="Báo cáo"
+                  action="benhnhan_action_report"
+                  parent="menu_moi_con"
+                  sequence="8"/>
+        <menuitem id="loaibenh_menu"
+                  name="Loại bệnh"
+                  action="loaibenh_action"
+                  parent="menu_moi_con"
+                  sequence="6"/>
+        <menuitem id="template_demo_menu"
+                  name="Template"
+                  action="template_action"
+                  parent="menu_moi_con"
+                  sequence="9"/>
+    </data>
+</odoo>

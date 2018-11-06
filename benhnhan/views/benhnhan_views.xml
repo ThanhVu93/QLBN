@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--tree view-->
+        <record id="benhnhan_tree_view" model="ir.ui.view">
+            <field name="name">benhnhan.tree</field>
+            <field name="model">qtsx.benhnhan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" strinloaibenh_actiong="Bệnh nhân"/>
+                    <field name="sodienthoai"/>
+                    <field name="diachi"/>
+                    <field name="diaphuong" string="Tỉnh"/>
+                </tree>
+            </field>
+        </record>
+        <!--form view-->
+        <record id="benhnhan_form_view" model="ir.ui.view">
+            <field name="name">benhnhan.form</field>
+            <field name="model">qtsx.benhnhan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" string="Bệnh nhân"/>
+                                <field name="sodienthoai"/>
+                                <field name="diachi"/>
+                                <field name="diaphuong" string="Tỉnh"/>
+                            </group>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <!--kanban view-->
+        <record id="benhnhan_kanban_view" model="ir.ui.view">
+            <field name="name">benhnhan.kanban</field>
+            <field name="model">qtsx.benhnhan</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+               <kanban class="o_kanban_mobile">
+                    <field name="name" string="Bệnh nhân"/>
+                     <field name="sodienthoai"/>
+                     <field name="diachi"/>
+                 <templates>
+                     <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong><field name="name" string="Bệnh nhân"/></strong>
+                                    </div>
+                                    <div class="col-xs-6 pull-right text-right">
+                                        <strong><field name="sodienthoai"/></strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <field name="diachi"/>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <field name="diaphuong" string="Tỉnh"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                 </templates>
+               </kanban>
+            </field>
+        </record>
+        <!--search view-->
+        <record id="loai_search" model="ir.ui.view">
+            <field name="name">benhnhan.search</field>
+            <field name="model">qtsx.benhnhan</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" string="Bệnh nhân"/>
+                    <field name="sodienthoai"/>
+                    <field name="diachi"/>
+                    <field name="diaphuong" string="Tỉnh"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Tỉnh" name="Tinh" domain="[]" context="{'group_by':'diaphuong'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--action view-->
+        <record id="benhnhan_action" model="ir.actions.act_window">
+            <field name="name">Bệnh nhân</field>
+            <field name="res_model">qtsx.benhnhan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{
+                 'search_default_Tinh': '1',
+            }</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" inherit_id="web.template">
+    <!--change string button create, discard in list view-->
+    <t t-extend="ListView.buttons">
+        <t t-jquery=".o_list_button_add" t-operation="replace">
+            <button type="button" class="btn btn-primary btn-sm o_list_button_add" accesskey="c">
+                Thêm mới
+            </button>
+        </t>
+        <t t-jquery=".o_list_button_discard" t-operation="replace">
+            <button type="button" class="btn btn-default btn-sm o_list_button_discard" accesskey="j">
+                Trở về
+            </button>
+        </t>
+    </t>
+
+    <!--change string button create, discard in form view-->
+    <t t-extend="FormView.buttons">
+        <t t-jquery=".o_form_buttons_view" t-operation="replace">
+            <div class="o_form_buttons_view">
+                <button t-if="widget.is_action_enabled('edit')" type="button" class="btn btn-primary btn-sm o_form_button_edit" accesskey="a">
+                    Edit
+                </button>
+                <button t-if="widget.is_action_enabled('create')" type="button" class="btn btn-default btn-sm o_form_button_create" accesskey="c">
+                    Thêm mới
+                </button>
+            </div>
+        </t>
+        <t t-jquery=".o_form_buttons_edit" t-operation="replace">
+            <div class="o_form_buttons_edit">
+                <button type="button" class="btn btn-primary btn-sm o_form_button_save" accesskey="s">
+                    Save
+                </button>
+                <button type="button" class="btn btn-default btn-sm o_form_button_cancel" accesskey="j">
+                    Trở về
+                </button>
+            </div>
+        </t>
+    </t>
+
+    <!--remove content help pivot view-->
+    <div t-extend="PivotView.nodata">
+        <t t-jquery="p:eq(1)" t-operation="replace">
+            <p/>
+        </t>
+    </div>
+
+    <!--remove content help graph view-->
+    <div t-extend="GraphView.error">
+        <t t-jquery="p:eq(1)" t-operation="replace">
+            <p/>
+        </t>
+    </div>
+
+    <!--hide button add favorites-->
+    <div t-extend="SearchView.FavoriteMenu">
+        <t t-jquery="button" t-operation="replace"/>
+        <t t-jquery="ul" t-operation="replace"/>
+    </div>
+</templates>

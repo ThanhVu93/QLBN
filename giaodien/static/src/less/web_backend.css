@@ -1,0 +1,392 @@
+body{
+    font-family: "Tahoma" !important;
+}
+/*Customize menu top*/
+.navbar-inverse {
+        background-color: #006f3c;
+    border-color: #005d25;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+}
+
+.o_web_client .navbar li > a {
+    padding: 10px 20px;
+        border-right: 1px solid #006028;
+    margin-top: 0px;
+    font-size: 14px;
+    margin-bottom: 0px;
+    color:#FFF;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
+        background-color: #006028;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #fff;
+        background-color: #006028;
+}
+.o_user_menu open .dropdown-toggle:focus{
+        background-color: #006028;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
+        background-color: #006028;
+}
+.o_web_client .navbar li.o_user_menu ul li > a{
+        color: #006028;
+        padding-top:5px;
+        padding-bottom:5px;
+}
+.o_web_client .navbar-collapse{
+        padding-left: 0px;
+}
+@media screen and (max-width: 768px) {
+    .o_web_client .navbar-collapse{
+        padding-left: 15px;
+}
+}
+.menu_one{
+     width: 218px;
+     text-align: center;
+}
+.o_web_client .navbar ul#menu_more li > a{
+        color: #006028 !important;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #ffffff;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #006028;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+        border-color: #006028;
+}
+
+
+/*Menu left*/
+.o_sub_menu{
+    background-color: #006028;
+    color: #ffffff;
+}
+.o_sub_menu_logo{
+        background: #FFF;
+}
+.o_web_client > .o_main .o_sub_menu .o_sub_menu_content .oe_secondary_submenu > li > a{
+    padding: 10px 5px 10px 25px;
+}
+.o_web_client > .o_main .o_sub_menu .o_sub_menu_content .oe_secondary_submenu > li:not(.active) > a{
+        color: #FFF;
+            border-left: 3px solid #006028;
+}
+.o_web_client > .o_main .o_sub_menu .o_sub_menu_content .oe_secondary_menu_section{
+        color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: normal;
+    border-bottom: 1px solid #f15929;
+    margin-left: 0px;
+    padding-left: 10px;
+        background: #005423;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a{
+    border-left: 3px solid #006028;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+    color: white;
+    border-left: 3px solid #f0eeee;
+    background-color: #005423;
+    border-bottom: 1px solid #005423;
+    border-top: 1px solid #005423;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+    background-color:inherit;
+}
+.o_web_client > .o_main .o_sub_menu .o_sub_menu_content .oe_secondary_submenu{
+    margin: 0px 0px 10px;
+}
+.oe_secondary_menu .oe_secondary_menu_section a{
+    color:#FFF;
+}
+.o_sub_menu_footer{
+        padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: 12px;
+    color: #e4e4e4;
+    background-color: #005423;
+    border-bottom: 1px solid #004a1f;
+    border-top: 1px solid #004a1f;
+}
+
+/*Css form*/
+.o_searchview{
+        border-radius: 1px;
+    padding: 1px 25px 3px 10px;
+    margin-bottom:5px;
+}
+.btn-sm, .btn-group-sm > .btn{
+    border-radius:0px;
+}
+.btn-primary{
+        color: white;
+        background-color: #005423;
+    border-color: #005423;
+    box-shadow: 2px 2px 8px #CCC;
+}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active {
+    color: white;
+    background-color: #006028;
+    border-color: #006028;
+}
+.breadcrumb > .active{
+        color: #ff3d00;
+    text-shadow: 1px 1px 1px #b5b5b5;
+}
+.o_control_panel .breadcrumb > li > a:hover{
+    color: #ff3d00;
+}
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+.btn-default{
+        box-shadow: 2px 2px 8px #CCC;
+}
+.o_control_panel .breadcrumb > li > a{
+    color: #005423;
+    text-shadow: 1px 1px 1px #b5b5b5;
+}
+.o_control_panel .breadcrumb {
+        font-size: 14px;
+    margin: 0px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+input[type="text"], input[type="password"], input[type="number"], textarea, select{
+        border-radius: 1px;
+}
+.o_form_view .o_form_sheet_bg .o_form_sheet{
+    max-width: inherit;
+    width: 98%;
+}
+a {
+    color: #006028;
+}
+.ui-autocomplete .ui-menu-item.o_m2o_dropdown_option > a {
+    color: #006028;
+}
+.o_kanban_view .o_kanban_record{
+    margin-bottom: 10px !important;
+        box-shadow: 2px 2px 8px #a0a0a0 !important;
+}
+input[type="text"], input[type="password"], input[type="number"], textarea, select{
+        padding: 3px 4px;
+}
+h1{
+    font-size:19px;
+}
+.o_form_view .oe_avatar > img{
+    box-shadow: 2px 2px 8px #CCC;
+}
+.o_form_view .oe_button_box .oe_stat_button{
+       margin: 2px 2px 3px 3px;
+}
+.dropdown-menu{
+    border-radius:1px;
+}
+.o_form_view ul.oe_form_status li.oe_active > .label, .o_form_view ul.oe_form_status_clickable li.oe_active > .label{
+        text-shadow: 0 1px 1px #006028, 0 -1px 1px #006028;
+}
+.o_form_view ul.oe_form_status li.oe_active, .o_form_view ul.oe_form_status_clickable li.oe_active{
+        background-color: #005423;
+    background-image: linear-gradient(to bottom, #005423, #005423);
+}
+.o_form_view ul.oe_form_status li.oe_active > .arrow span, .o_form_view ul.oe_form_status_clickable li.oe_active > .arrow span{
+    background-color: #006028;
+    background: -webkit-gradient(linear, left top, right bottom, from(#005423), to(#005423));
+}
+.btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary,.btn-primary:hover{
+    background-color: #005423;
+    border-color: #005423;
+}
+
+.o_form_view > header{
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.o_form_view ul.oe_form_status li:first-child > .label, .o_form_view ul.oe_form_status_clickable li:first-child > .label{
+    border-left:none !important;
+}
+.modal-header h4.modal-title{
+    font-size:14px;
+}
+.modal-header{
+    background: #ffffff;
+    padding: 10px;
+    color: #002a11;
+    text-transform: uppercase;
+}
+.o_form_view .o_form_field.o_form_field_many2one .o_external_button{
+    color: #006aa2;
+}
+.ui-autocomplete .ui-state-focus,.ui-autocomplete .ui-state-focus:focus{
+     background: #006f3c !important;
+}
+.btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus{
+    background-color: #006028;
+    border-color: #006028;
+}
+.o_form_view .o_form_required.o_form_input, .o_form_view .o_form_required .o_form_input, .o_form_view .o_form_required textarea.o_form_textarea{
+        background-color: #e5f6ff;
+        font-size:14px;
+}
+.o_form_view.o_form_readonly .o_form_uri{
+        color: #006028;
+}
+.o_loading{
+    background-color: #00371e;
+}
+.badge{
+            background-color: #c11400;
+}
+.o_form_view.o_form_editable .o_form_field_monetary{
+        border-radius: 1px;
+}
+.o_kanban_view .o_kanban_record .o_kanban_image img{
+        box-shadow: 2px 2px 8px #CCC !important;
+}
+.label-primary{
+        background-color: #006028;
+}
+.o_form_view.o_form_readonly .o_form_uri:first-line {
+    color: #006028 !important;
+}
+.o_form_view .oe_button_box .oe_stat_button .o_button_icon{
+        color: #006028;
+}
+.o_form_view .oe_link{
+        color: #006aa2;
+    font-size: 15px;
+    padding-left: 0px;
+}
+.o_form_view .o_group .o_td_label .o_form_label{
+        margin-bottom: 5px;
+}
+.o_web_client > .o_main .o_sub_menu .o_sub_menu_content .oe_secondary_menu_section:before{
+     content: "\f104";
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin-right: 15px;
+    margin-top: 3px;
+    float: right;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.oe_kanban_details .oe_partner_heading{
+        color: #006028;
+}
+.o_calendar_container .o_calendar_sidebar_container .ui-datepicker table .ui-state-active{
+    background-color: #006028 !important;
+}
+.o_form_view .o_form_label{
+    font-size: 13px !important;
+}
+.table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td{
+        font-size: 13px !important;
+}
+.o_list_view tbody > tr.o_group_header .o_group_name{
+        font-size: 13px;
+}
+.o_list_view.table td, .o_list_view.table th{
+        font-size: 13px;
+}
+.o_searchview_facet .o_facet_values span{
+     font-size: 13px;
+}
+.oe_highlight:hover{
+        background-color: #006f3c;
+    border-color: #006f3c;
+}
+.o_form_view .oe_button_box .oe_stat_button .o_stat_info .o_stat_value{
+    color: #0077b5;
+}
+.o_form_view .o_form_field_image .o_form_image_controls{
+        background-color: #0182c6;
+}
+.breadcrumb > li + li:before{
+    color: #005423;
+}
+.datepicker .table-condensed > thead{
+        background-color: #005423 !important;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: normal;
+}
+.datepicker .table-condensed > tbody > tr > td.active, .datepicker .table-condensed > tbody > tr > td .active{
+        background-color: #006028 !important;
+}
+.datepicker .table-condensed > tbody > tr > td.today:before{
+    border-bottom-color: #006028 !important;
+}
+.o_form_view .o_field_translate.o_translate_active{
+    display:none;
+}
+.datepicker .table-condensed > thead > tr:first-child th:hover{
+    background-color: #0182c6;
+}
+.o_form_view .o_form_textarea{
+    margin-top:5px;
+}
+.o_searchview .o_searchview_autocomplete li.o-selection-focus{
+        background-color: #006f3c;
+}
+.o_form_view .o_group.o_inner_group.oe_subtotal_footer > tbody > tr > td .o_form_label{
+        font-weight: bold;
+}
+.o_web_client{
+    background-color: #fdfdfd !important;
+}
+.o_form_view .oe_button_box .oe_stat_button .o_stat_info .o_stat_value {
+    color: #ff3d00 !important;
+}
+.o_kanban_view .o_kanban_group .o_kanban_header .o_column_title{
+    text-align: center;
+    text-transform: uppercase;
+        font-size: 15px !important;
+            font-weight: bold !important;
+            color: #005423;
+}
+.oe_highlight:active:hover, .oe_highlight.active:hover, .open > .dropdown-toggle.oe_highlight:hover, .oe_highlight:active:focus, .oe_highlight.active:focus, .open > .dropdown-toggle.oe_highlight:focus, .oe_highlight:active.focus, .oe_highlight.active.focus, .open > .dropdown-toggle.oe_highlight.focus{
+    background-color: #006028 !important;
+    border-color: #006028 !important;
+    color:#FFF !important;
+}
+.o_form_sheet h1{
+        color: #ff3d00;
+    text-shadow: 1px 1px 1px #cccccc;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+body .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active{
+    background-color: #006028 !important;
+    border-color: #006028 !important;
+    color:#FFF !important;
+}
+.o_web_client > .o_main .o_sub_menu .o_sub_menu_content .oe_secondary_submenu .oe_menu_text{
+        display: contents !important;
+}
+body .ui-autocomplete{
+    font-family: "Tahoma" !important;
+}
+
+/*css number of group by */
+.oe_number{
+    text-align: right;
+}

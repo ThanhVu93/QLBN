@@ -1,0 +1,12 @@
+.o_cp_right .o_add_custom_group {
+  display: none;
+}
+#oe_main_menu_navbar .oe_systray {
+  display: none !important;
+}
+#oe_main_menu_navbar .o_user_menu li:nth-child(1),
+#oe_main_menu_navbar .o_user_menu li:nth-child(2),
+#oe_main_menu_navbar .o_user_menu li:nth-child(3),
+#oe_main_menu_navbar .o_user_menu li:nth-child(5) {
+  display: none !important;
+}

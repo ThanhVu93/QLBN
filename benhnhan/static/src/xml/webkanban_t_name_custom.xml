@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" inherit_id="web_kanban.template">
+    <t t-extend="KanbanView.buttons">
+        <t t-jquery=".o-kanban-button-new" t-operation="replace">
+            <button type="button" class="btn btn-primary btn-sm o-kanban-button-new" accesskey="c">
+                Thêm mới
+            </button>
+        </t>
+    </t>
+</templates>

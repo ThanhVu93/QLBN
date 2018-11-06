@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        	<!--form view-->
+	<record id="excel_benhnhan_views" model="ir.ui.view">
+		<field name="name">report.benhnhan.out</field>
+		<field name="model">report.benhnhan.out</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="file_name" filename="report_data"/>
+					<field name="report_data" invisible="1"/>
+				</group>
+				<footer>
+					<button string="Cancel" class="btn-primary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+        <!--form view-->
+        <record id="baocao_form_view_report" model="ir.ui.view">
+            <field name="name">baocao.form</field>
+            <field name="model">qtsx.baocao</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                           <field name="ngaykham"/>
+                        </group>
+                    </sheet>
+                     <footer>
+                        <button name="baocao" string="Báo cáo" type="object" class="btn-primary"/>
+                        <button string="Hủy" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!--action view-->
+        <record id="benhnhan_action_report" model="ir.actions.act_window">
+            <field name="name">Bệnh nhân</field>
+            <field name="res_model">qtsx.baocao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="baocao_form_view_report"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

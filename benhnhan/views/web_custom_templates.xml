@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="my_assets_frontend" inherit_id="web.assets_frontend">
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" type="text/less" href="/benhnhan/static/src/less/web_frontend.css"/>
+            </xpath>
+        </template>
+        <template id="my_assets" inherit_id="web.assets_backend">
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" type="text/less" href="/benhnhan/static/src/less/web_custom.less"/>
+            </xpath>
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" type="text/less" href="/benhnhan/static/src/less/web_backend.css"/>
+            </xpath>
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/benhnhan/static/src/js/web_custom.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

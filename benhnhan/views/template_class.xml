@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--tree view-->
+        <record id="template_tree_view" model="ir.ui.view">
+            <field name="name">template.tree</field>
+            <field name="model">test.model2</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="bool"/>
+                    <field name="interger"/>
+                    <field name="float"/>
+                    <field name="text"/>
+                    <field name="selection"/>
+                    <field name="note"/>
+                    <field name="date"/>
+                    <field name="datetime"/>
+                    <field name="many2one"/>
+                    <field name="one2many"/>
+                    <field name="many2many"/>
+                </tree>
+            </field>
+        </record>
+        <!--form view-->
+        <record id="template_form_view" model="ir.ui.view">
+            <field name="name">template.form</field>
+            <field name="model">test.model2</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="bool"/>
+                                <field name="interger"/>
+                                <field name="float"/>
+                                <field name="text"/>
+                                <field name="selection"/>
+                                <field name="note"/>
+                                <field name="date"/>
+                                <field name="datetime"/>
+                                <field name="many2one"/>
+                                <field name="one2many"/>
+                                <field name="many2many"/>
+                                <field name="many2onename"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--search view-->
+        <record id="template_search" model="ir.ui.view">
+            <field name="name">template.search</field>
+            <field name="model">test.model2</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!--action view-->
+        <record id="template_action" model="ir.actions.act_window">
+            <field name="name">Template</field>
+            <field name="res_model">test.model2</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
